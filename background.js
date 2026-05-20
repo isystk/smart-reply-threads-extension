@@ -8,14 +8,14 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
 });
 
 async function callGemini(apiKey, promptTemplate, postText) {
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${apiKey}`;
 
   const response = await fetch(url, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       contents: [{ parts: [{ text: promptTemplate + postText }] }],
-      generationConfig: { maxOutputTokens: 300, temperature: 0.7 },
+      generationConfig: { maxOutputTokens: 1024, temperature: 0.7 },
     }),
   });
 
