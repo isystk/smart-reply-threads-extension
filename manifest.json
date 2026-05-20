@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Threads Reply Assistant",
+  "version": "1.0.0",
+  "description": "AI-powered reply assistant for Threads",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://www.threads.com/*",
+    "https://threads.net/*",
+    "https://generativelanguage.googleapis.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.threads.com/*", "https://threads.net/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Threads Reply Assistant"
+  }
+}
